@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rock Paper Scissors Game</title>
+	<link rel="stylesheet" href="style.css">
+	<!-- Head section: metadata, title, and stylesheet link -->
+</head>
+<body>
+	<!-- Main container for the game UI -->
+	<div class="container">
+		<!-- Game title -->
+		<h1>Rock Paper Scissors</h1>
+		<!-- Scoreboard: displays player and computer scores -->
+		<div class="scoreboard">
+			Player: <span id="player-score">0</span> |
+			Computer: <span id="computer-score">0</span>
+		</div>
+		<!-- Round info: shows current round out of 5 -->
+		<div class="round-info">
+			Round: <span id="round-count">1</span> / 5
+		</div>
+		<!-- Choice buttons: player selects Rock, Paper, or Scissors -->
+		<div class="choices">
+			<button class="choice-btn" id="rock">Rock</button>
+			<button class="choice-btn" id="paper">Paper</button>
+			<button class="choice-btn" id="scissors">Scissors</button>
+		</div>
+		<!-- Feedback: shows result of each round -->
+		<div class="feedback" id="feedback"></div>
+		<!-- Final result: displays winner after 5 rounds -->
+		<div class="final-result" id="final-result"></div>
+		<!-- Reset button: allows replaying the game -->
+		<button class="reset-btn" id="reset" style="display:none;">Reset Game</button>
+	</div>
+</body>
+</html>
