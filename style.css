@@ -1,46 +1,228 @@
+/* Catppuccin Mocha Theme Variables */
+:root {
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --surface: #313244;
+    --surface0: #29293d;
+    --text: #cdd6f4;
+    --rosewater: #f5e0dc;
+    --flamingo: #f2cdcd;
+    --pink: #f5c2e7;
+    --red: #f38ba8;
+    --green: #a6e3a1;
+    --blue: #89b4fa;
+    --lavender: #b4befe;
+    --shadow: 0 4px 24px rgba(30,30,46,0.25);
+    --radius: 16px;
+}
+
+/* Body & Container */
 body {
-	font-family: Arial, sans-serif;
-	background: #f4f4f4;
-	margin: 0;
-	padding: 0;
-	text-align: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1.25rem; /* Increased base font size */
+    background: var(--base);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    min-height: 100vh;
+    transition: background 0.6s;
 }
+
 .container {
-	background: #fff;
-	max-width: 400px;
-	margin: 40px auto;
-	padding: 24px;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: var(--mantle);
+    max-width: 520px; /* Increased container width */
+    margin: 40px auto;
+    padding: 36px 24px; /* Increased padding */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    animation: fadeIn 1s;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Headings */
 h1 {
-	margin-bottom: 16px;
+    margin-bottom: 18px;
+    font-size: 2.6rem; /* Increased heading size */
+    letter-spacing: 1px;
+    color: var(--lavender);
+    text-shadow: 0 2px 8px rgba(137,180,250,0.10);
 }
+
+/* Scoreboard & Info */
+.scoreboard, .round-info {
+    margin: 14px 0;
+    padding: 12px 0;   /* Increased padding */
+    background: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(30,30,46,0.10);
+    font-size: 1.4rem; /* Increased scoreboard font size */
+    color: var(--text);
+}
+
+.scoreboard span, .round-info span {
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.feedback {
+    margin: 14px 0;
+    font-size: 1.4rem; /* Increased feedback font size */
+    color: var(--rosewater);
+    min-height: 32px;  /* Increased min-height */
+    transition: color 0.3s;
+}
+
+.final-result {
+    margin: 16px 0;
+    padding: 14px 0;   /* Increased padding */
+    font-size: 1.6rem; /* Increased final result font size */
+    font-weight: bold;
+    background: var(--surface);
+    border-radius: 8px;
+    color: var(--green);
+    box-shadow: 0 2px 8px rgba(166,227,161,0.10);
+    transition: color 0.3s, background 0.3s;
+}
+
+/* Choices */
 .choices {
-	margin: 20px 0;
+    margin: 24px 0;
+    display: flex;
+    justify-content: center;
+    gap: 24px; /* Increased gap between buttons */
 }
+
 .choice-btn {
-	padding: 12px 24px;
-	margin: 0 8px;
-	font-size: 16px;
-	cursor: pointer;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	background: #e0e0e0;
-	transition: background 0.2s;
+    width: 90px;  /* Increased button size */
+    height: 90px; /* Increased button size */
+    border-radius: 50%;
+    border: none;
+    background: var(--surface0);
+    box-shadow: 0 2px 12px rgba(30,30,46,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.3s,
+        box-shadow 0.3s,
+        transform 0.2s;
+    position: relative;
+    font-size: 0;
+    outline: none;
 }
-.choice-btn:hover {
-	background: #d1e7dd;
+
+.choice-btn#rock {
+    background: linear-gradient(135deg, var(--red) 60%, var(--surface0) 100%);
+    box-shadow: 0 0 16px 2px var(--red), var(--shadow);
 }
-.scoreboard, .round-info, .feedback, .final-result {
-	margin: 12px 0;
+.choice-btn#paper {
+    background: linear-gradient(135deg, var(--green) 60%, var(--surface0) 100%);
+    box-shadow: 0 0 16px 2px var(--green), var(--shadow);
 }
+.choice-btn#scissors {
+    background: linear-gradient(135deg, var(--blue) 60%, var(--surface0) 100%);
+    box-shadow: 0 0 16px 2px var(--blue), var(--shadow);
+}
+
+.choice-btn .ph {
+    font-size: 2.8rem; /* Increased icon size */
+    color: var(--text);
+    transition: color 0.3s, text-shadow 0.3s, transform 0.2s;
+    text-shadow: 0 2px 8px rgba(30,30,46,0.10);
+}
+
+.choice-btn:hover, .choice-btn:focus {
+    transform: scale(1.08);
+    box-shadow: 0 0 24px 4px var(--lavender), var(--shadow);
+    background: var(--mantle);
+}
+
+.choice-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 12px 2px var(--pink), var(--shadow);
+}
+
+.choice-btn#rock:hover .ph,
+.choice-btn#rock:focus .ph {
+    color: var(--red);
+    text-shadow: 0 0 12px var(--red);
+}
+.choice-btn#paper:hover .ph,
+.choice-btn#paper:focus .ph {
+    color: var(--green);
+    text-shadow: 0 0 12px var(--green);
+}
+.choice-btn#scissors:hover .ph,
+.choice-btn#scissors:focus .ph {
+    color: var(--blue);
+    text-shadow: 0 0 12px var(--blue);
+}
+
+.choice-btn#rock:active .ph {
+    color: var(--pink);
+}
+.choice-btn#paper:active .ph {
+    color: var(--rosewater);
+}
+.choice-btn#scissors:active .ph {
+    color: var(--lavender);
+}
+
+/* Hide text inside buttons for accessibility, show only icons */
+.choice-btn span, .choice-btn img {
+    display: none;
+}
+
+/* Reset Button */
 .reset-btn {
-	margin-top: 16px;
-	padding: 8px 20px;
-	font-size: 15px;
-	border-radius: 4px;
-	border: none;
-	background: #f8d7da;
-	cursor: pointer;
+    margin-top: 18px;
+    padding: 14px 36px; /* Increased button padding */
+    font-size: 1.3rem;  /* Increased font size */
+    border-radius: 8px;
+    border: none;
+    background: var(--red);
+    color: var(--base);
+    font-weight: bold;
+    box-shadow: 0 2px 12px rgba(243,139,168,0.18);
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.reset-btn:hover, .reset-btn:focus {
+    background: var(--flamingo);
+    box-shadow: 0 0 24px 4px var(--red), var(--shadow);
+    transform: scale(1.05);
+}
+
+.reset-btn:active {
+    background: var(--pink);
+    transform: scale(0.97);
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .container {
+        max-width: 98vw;
+        padding: 20px 4vw;
+    }
+    .choices {
+        gap: 14px;
+    }
+    .choice-btn {
+        width: 70px;
+        height: 70px;
+    }
+    .choice-btn .ph {
+        font-size: 2rem;
+    }
+}
+
+/* Smooth transitions between rounds */
+.feedback, .final-result, .scoreboard, .round-info {
+    transition: background 0.4s, color 0.4s, box-shadow 0.4s;
 }
